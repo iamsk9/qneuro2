@@ -1,0 +1,23 @@
+<ion-view style="background-color: #52BDF2;">
+  <ion-content>
+    <div class="contain">
+      <table width="100%">
+        <tbody>
+          <tr>
+            <td>Email ID:</td>
+            <td><input type="text" ng-model="loginData.email"></td>
+          </tr>
+          <tr>
+            <td>Password:</td>
+            <td><input type="password" ng-model="loginData.mobile"></td>
+          </tr>
+        </tbody>
+      </table><br>
+      <center>
+        <button class="button button-positive" ng-click="doLogin()" style="border: 1px solid white;background: url(img/background.png) no-repeat;width:120px;">
+          Login
+        </button>
+      </center>
+    </div>
+  </ion-content>
+</ion-view>

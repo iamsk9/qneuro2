@@ -1,0 +1,81 @@
+.signupForm{
+  padding: 10px;
+  margin-left:auto;
+  margin-right:auto;
+  padding-top: 20%;
+}
+.accept{
+  padding-left: 30px;
+}
+.backnext{
+  float: right;
+  padding-right: 30px;
+}
+.plans{
+  padding-top: 145px;
+}
+.subs{
+   padding-left: 15px;
+}
+table {
+    border-collapse: collapse;
+}
+
+.left
+{
+   width :30%;
+   padding-top :50px;
+   padding-left :10px;
+}
+
+td {
+    padding: 2px;
+}
+
+input[type=text] {
+    border: none;
+    border-bottom: 1px solid black;
+    marging:8px 0;
+    box-sizing: border-box;
+    background: transparent;
+    width: 200px;
+    font-size: 15px;
+}
+
+input[type=password] {
+    border: none;
+    border-bottom: 1px solid black;
+    marging:8px 0;
+    box-sizing: border-box;
+    background: transparent;
+    width: 200px;
+    font-size: 15px;
+}
+
+.button-positive{
+  border-radius: 5px;
+}
+
+#tabb
+{
+    width:80px;
+    height:80px;
+}
+
+#numb{
+  width: 1px;
+}
+.contain{
+  padding-top: 30%;
+  padding-left: 15px;
+}
+#butt{
+  width: 120px;
+}
+.contain1{
+  padding-top: 20px;
+  padding-left: 10px;
+}
+#space{
+  margin-right: 15px;
+}

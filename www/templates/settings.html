@@ -1,0 +1,55 @@
+<ion-view style="background-color: #52BDF2;">
+  <ion-content>
+
+    <div class="container">
+      <table>
+    <tr>
+      <td>
+        <div class="left">
+      <button class="button button-positive" id="tabb" ng-click="goToReport()" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
+        Report
+      </button><br><br>
+        <button class="button button-positive" id="tabb" ng-click="goToAddChild()" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
+          Add Child
+      </button><br><br>
+      <button class="button button-positive" id="tabb" ng-click="goToSubscriptions()" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
+        Subscriptions
+      </button><br>
+      </div>
+    </td>
+    <td>
+    <div class="contain1">
+      <label id="space">User Id:</label>
+      <input type="text"><br>
+      <label id="space">User Name:</label>
+      <input type="text"><br>
+      <button class="button button-positive" id="space" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
+        Upgrade
+      </button>
+      <button class="button button-positive" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
+        Renew Account
+      </button><br><br>
+      <button class="button button-positive" id="space" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
+        Support
+      </button>
+      <button class="button button-positive" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
+        Help
+      </button><br><br>
+      <button class="button button-positive" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
+        Settings
+      </button><br><br>
+      <label id="space">PIN:</label>
+      <label>On  </label><input type="checkbox" id="space">
+      <label>Off  </label><input type="checkbox"><br><br>
+      <center>
+        <button class="button button-positive" style="border: 1px solid white;background: url(img/background.png) no-repeat;" ng-click="logout()">
+          Log out
+        </button>
+      </center>
+    </div>
+  </td>
+  </tr>
+</table>
+  </div>
+  </ion-content>
+</ion-view>

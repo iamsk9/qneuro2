@@ -1,0 +1,40 @@
+<ion-view style="background-color: #52BDF2;">
+  <ion-content>
+    <div class="signupForm">
+      <table>
+        <tbody>
+          <tr>
+            <td>Full name :</td>
+            <td><input type="text" ng-model="deleteDetails.fullName"></td>
+          </tr>
+          <tr>
+            <td>User name :</td>
+            <td><input type="text" ng-model="deleteDetails.userName"></td>
+          </tr>
+          <tr>
+            <td>D.O.B :</td>
+            <td><input type="text" ng-model="deleteDetails.dob"></td>
+          </tr>
+          <tr>
+            <td>Grade :</td>
+            <td><input type="text" ng-model="deleteDetails.grade"></td>
+          </tr>
+          <tr>
+            <td>
+              <br>
+            </td>
+          </tr>
+          <tr>
+            <td>Gender :</td>
+            <td>Male <input type="checkbox" ng-model="gender.male" id="space">Female  <input type="checkbox" ng-model="gender.female"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div><br>
+    <center>
+      <button class="button button-positive" ng-click="deleteAccount()" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
+        Delete Account
+      </button>
+    </center>
+  </ion-content>
+</ion-view>
