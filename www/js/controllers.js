@@ -164,6 +164,11 @@ angular.module('starter.controllers', [])
       }
       if(flag){
         UserService.deleteChildDetails($scope.deleteDetails);
+        var alertPopup = $ionicPopup.alert({
+              title: 'Oops!',
+              template: 'Successfully Deleted Your Child Details'
+        });
+        $state.go('addChild');
       }else {
         var alertPopup = $ionicPopup.alert({
           title: 'Oops!',
