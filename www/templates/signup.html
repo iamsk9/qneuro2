@@ -1,37 +1,46 @@
 <ion-view style="background-color: #52BDF2;">
   <ion-content>
+    <form name="userForm" ng-submit="addUser()">
     <div class="signupForm">
       <table>
         <tbody>
           <tr>
-            <td>User name :</td>
-            <td><input type="text" ng-model="userDetails.userName"></td>
-          </tr>
-          <tr>
-            <td>Full name :</td>
-            <td><input type="text" ng-model="userDetails.fullName"></td>
-          </tr>
-          <tr>
-            <td>Email ID :</td>
-            <td><input type="text" ng-model="userDetails.email"></td>
-          </tr>
-          <tr>
-            <td>Address :</td>
-            <td><input type="text" ng-model="userDetails.address"></td>
-          </tr>
-          <tr>
-            <td>Mobile number :</td>
-            <td><input type="text" ng-model="userDetails.mobile"></td>
-          </tr>
+             <td>User name :</td>
+             <td><input type="text" ng-model="userDetails.userName" required>
+             </td>
+           </tr>
+           <tr>
+             <td>Full name :</td>
+             <td><input type="text" name="fullname" ng-model="userDetails.fullName" ng-pattern="/^[a-zA-Z ]*$/" required>
+             <p style="font-size:12px" ng-show="userForm.fullname.$error.pattern">Name in alphabets only.</p></td>
+           </tr>
+           <tr>
+             <td>Email ID :</td>
+             <td><input type="text" ng-model="userDetails.email" name="email" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required>
+               <p style="font-size:12px" ng-show="userForm.email.$error.pattern">Invalid Email.</p>
+             </td>
+           </tr>
+           <tr>
+             <td>Address :</td>
+             <td><input type="text" ng-model="userDetails.address" required></td>
+           </tr>
+           <tr>
+             <td>Mobile number :</td>
+             <td><input type="text" ng-model="userDetails.mobile" name="phoneno" ng-minlength="10" ng-pattern="/^[0-9]+$/" required>
+               <p style="font-size:12px" ng-show="userForm.phoneno.$error.pattern">Number in digits only.</p>
+               <p style="font-size:12px" ng-show="userForm.phoneno.$error.minlength">Number is atleast 10 digits.</p>
+             </td>
+           </tr>
         </tbody>
       </table>
     </div>
     <div class="accept">
-      <input type="checkbox" ng-model="filter.blue">I accept
+      <input type="checkbox" ng-model="accept">I accept
     </div>
     <div class="backnext">
       <button class="button button-positive" id="butt" ng-click="goBack()" style="border: 1px solid white;background: url(img/background.png) no-repeat;width:120px;">Back</button><br><br>
-      <button class="button button-positive" id="butt" ng-click="addUser()" style="border: 1px solid white;background: url(img/background.png) no-repeat;width:120px;">Next</button>
+      <button class="button button-positive" id="butt" ng-disabled="!accept" style="border: 1px solid white;background: url(img/background.png) no-repeat;width:120px;">Next</button>
     </div>
+    </form>
   </ion-content>
 </ion-view>

@@ -1,28 +1,26 @@
 <ion-view style="background-color: #52BDF2;">
   <ion-content>
+    <form name="userForm" ng-submit="createAccount()">
     <div class="signupForm">
       <table>
         <tbody>
           <tr>
             <td>Full name :</td>
-            <td><input type="text" ng-model="accountDetails.fullName"></td>
+            <td><input type="text" name="fullname" ng-pattern="/^[a-zA-Z ]*$/" ng-model="accountDetails.fullName" required>
+            <p style="font-size:12px" ng-show="userForm.fullname.$error.pattern">Name in alphabets only.</p></td>
           </tr>
           <tr>
             <td>User name :</td>
-            <td><input type="text" ng-model="accountDetails.userName"></td>
+            <td><input type="text" ng-model="accountDetails.userName" required></td>
           </tr>
           <tr>
             <td>D.O.B :</td>
-            <td><input type="text" ng-model="accountDetails.dob"></td>
+            <td><input type="text" ng-model="accountDetails.dob" name="dateof" ng-pattern="/^[0-9/-]*$/" required>
+            <p style="font-size:12px" ng-show="userForm.dateof.$error.pattern">Invalid date of birth.</p></td>
           </tr>
           <tr>
             <td>Grade :</td>
-            <td><input type="text" ng-model="accountDetails.grade"></td>
-          </tr>
-          <tr>
-            <td>
-              <br>
-            </td>
+            <td><input type="text" ng-model="accountDetails.grade" required></td>
           </tr>
           <tr>
             <td>Gender :</td>
@@ -32,10 +30,11 @@
       </table>
     </div><br>
     <center>
-      <button class="button button-positive" ng-click="createAccount()" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
+      <button class="button button-positive" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
         Create Account
       </button>
 
     </center>
+     </form>
   </ion-content>
 </ion-view>

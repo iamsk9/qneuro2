@@ -196,6 +196,7 @@ angular.module('starter.controllers', [])
             template: 'Select a Subscription plan'
       });
     }
+    console.log(subscript);
     UserService.addSubscription(subscript);
     var alertPopup = $ionicPopup.alert({
       title: 'Thank You!',
