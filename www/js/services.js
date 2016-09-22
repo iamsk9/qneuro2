@@ -7,8 +7,9 @@ angular.module('starter.services', [])
   addUser = function (data) {
     console.log(data);
     var link = 'http://epicsoft.esy.es/signup.php';
-    $http.post(link, data).then(function (res){
+    return $http.post(link, data).then(function (res){
       console.log(res.data);
+      return res.data;
     });
   };
 

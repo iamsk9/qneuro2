@@ -12,10 +12,11 @@
     $dob = $request->dob;
     $grade = $request->grade;
     $gender = $request->gender;
+    $userid = $request->userId;
     $created_at = $request->created_at;
     $updated_at = $request->updated_at;
 
-    $query = "INSERT INTO childdetails (username, fullname, dob, gender, grade, created_at, updated_at) VALUES ('$username', '$fullname','$dob','$grade','$gender', '$created_at', '$updated_at')";
+    $query = "INSERT INTO childdetails (userid , username, fullname, dob, gender, grade, created_at, updated_at) VALUES ('$userid', '$username', '$fullname','$dob','$grade','$gender', '$created_at', '$updated_at')";
     mysqli_query($conn, $query);
 
     echo $username." ".$dob." ".$grade." ".$gender;

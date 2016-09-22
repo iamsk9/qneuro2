@@ -65,18 +65,27 @@ angular.module('starter.controllers', [])
   $scope.userDetails = {};
 
   $scope.addUser = function(){
+
     $scope.userDetails.created_at = new Date();
-    UserService.addUser($scope.userDetails);
-    var alertPopup = $ionicPopup.alert({
-      title: 'Welcome!',
-      template: 'Thank You for signing up...'
+    UserService.addUser($scope.userDetails)
+    .then(function(result){
+      console.log(result);
+      var alertPopup = $ionicPopup.alert({
+        title: 'Welcome!',
+        template: 'Thank You for signing up...'
+      });
+      UserService.logining($scope.userDetails)
+      .then(function(result){
+        console.log(result);
+        $rootScope.userId = result;
+        $state.go('subscription');
+        $scope.userDetails.userName = '';
+        $scope.userDetails.fullName = '';
+        $scope.userDetails.email = '';
+        $scope.userDetails.address = '';
+        $scope.userDetails.mobile = '';
+      });
     });
-    $state.go('subscription');
-    $scope.userDetails.userName = '';
-    $scope.userDetails.fullName = '';
-    $scope.userDetails.email = '';
-    $scope.userDetails.address = '';
-    $scope.userDetails.mobile = '';
   };
 
   $scope.goBack = function(){
@@ -112,12 +121,13 @@ angular.module('starter.controllers', [])
         $scope.accountDetails.created_at = new Date();
         $scope.accountDetails.updated_at = new Date();
         console.log($scope.accountDetails);
+        $scope.accountDetails.userId = $rootScope.userId;
         UserService.addChildDetails($scope.accountDetails);
         var alertPopup = $ionicPopup.alert({
           title: 'Oops!',
           template: 'Your Child Details are added Successfully'
         });
-        $state.go('addChild');
+        $state.go('report');
       }else {
         var alertPopup = $ionicPopup.alert({
               title: 'Oops!',
@@ -186,7 +196,7 @@ angular.module('starter.controllers', [])
       title: 'Thank You!',
       template: 'Your Subscription has been Successfully added..'
     });
-    //$state.go('subscription');
+    $state.go('register');
   };
 })
 
@@ -207,6 +217,10 @@ angular.module('starter.controllers', [])
   $scope.goToSubscriptions = function(){
     $state.go('subscription');
   };
+
+  $scope.goToDelete = function(){
+    $state.go('delete');
+  };
 })
 
 .controller('ReportCtrl', function($scope, $state,Backand, $http, $rootScope, $ionicPopup) {
@@ -222,6 +236,10 @@ angular.module('starter.controllers', [])
 
   $scope.goToSubscriptions = function(){
     $state.go('subscription');
+  };
+
+  $scope.goToDelete = function(){
+    $state.go('delete');
   };
 })
 
@@ -243,5 +261,9 @@ angular.module('starter.controllers', [])
     $window.localStorage.clear();
     console.log($rootScope.userId);
     $state.go('main');
+  };
+
+  $scope.goToDelete = function(){
+    $state.go('delete');
   };
 });

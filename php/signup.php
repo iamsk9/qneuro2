@@ -14,7 +14,7 @@
     $address = $request->address;
     $created_at = $request->created_at;
 
-    $query = "INSERT INTO user (username, fullname, email, address, mobile, created_at) VALUES ('$username', '$fullname','$email','$mobile','$address', '$created_at')";
+    $query = "INSERT INTO user (username, fullname, email, address, mobile, created_at) VALUES ('$username', '$fullname','$email','$address', '$mobile', '$created_at')";
     mysqli_query($conn, $query);
 
     echo $username." ".$email." ".$mobile." ".$address;
