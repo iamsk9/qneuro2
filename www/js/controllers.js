@@ -51,10 +51,9 @@ angular.module('starter.controllers', [])
           title: 'Welcome!',
           template: 'Thank You for Logining...'
         });
-        $state.go('addChild');
+        $state.go('settings');
         $scope.loginData.email = '';
         $scope.loginData.mobile = '';
-        $state.go('addChild');
       }
     });
   };
