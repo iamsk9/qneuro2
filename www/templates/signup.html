@@ -31,6 +31,12 @@
                <p style="font-size:12px" ng-show="userForm.phoneno.$error.minlength">Number is atleast 10 digits.</p>
              </td>
            </tr>
+           <tr>
+              <td>Password :</td>
+              <td><input type="password" name="passsword" ng-minlength="5" ng-model="userDetails.password" required>
+                <p style="font-size:12px" ng-show="userForm.passsword.$error.minlength">password too short.</p>
+              </td
+           </tr>
         </tbody>
       </table>
     </div>

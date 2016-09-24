@@ -16,8 +16,9 @@ angular.module('starter.services', [])
   addChildDetails = function (data) {
     console.log(data);
     var link = 'http://epicsoft.esy.es/addChildDetails.php';
-    $http.post(link, data).then(function (res){
+     return $http.post(link, data).then(function (res){
       console.log(res.data);
+      return res.data;
     });
   };
 
@@ -50,12 +51,22 @@ angular.module('starter.services', [])
     });
   };
 
+  getGameOneDetails = function(data){
+      console.log(data);
+      var link = 'http://epicsoft.esy.es/gamedetails.php';
+        return $http.post(link, data)
+        .then(function (res){
+          return res.data;
+        });
+  };
+
   return{
     addUser: addUser,
     getUserId:getUserId,
     addChildDetails: addChildDetails,
     deleteChildDetails: deleteChildDetails,
     logining:logining,
-    addSubscription: addSubscription
+    addSubscription: addSubscription,
+    getGameOneDetails : getGameOneDetails
   };
 });

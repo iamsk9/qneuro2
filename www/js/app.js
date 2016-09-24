@@ -66,6 +66,18 @@ angular.module('starter', ['ionic', 'backand', 'starter.controllers', 'starter.s
     templateUrl: 'templates/report.html',
     controller: 'ReportCtrl'
   })
+  .state('onclickmenu', {
+    url: '/onclickmenu',
+    templateUrl: 'templates/onclickmenu.html',
+    controller: 'OnClickMenuCtrl'
+  })
+
+  .state('gamereport', {
+    url: '/gamereport',
+    templateUrl: 'templates/gamereport.html',
+    controller: 'GameReport'
+  })
+
   .state('subscription', {
     url: '/subscription',
     templateUrl: 'templates/subscription.html',

@@ -17,6 +17,7 @@ angular.module('starter.controllers', [])
 
   $scope.doLogin = function(){
     console.log($scope.loginData);
+
     /*UserService.logining($scope.loginData)
     .then(function (result){
       $rootScope.userId = result.id;
@@ -49,11 +50,11 @@ angular.module('starter.controllers', [])
         $rootScope.userId = result;
         var alertPopup = $ionicPopup.alert({
           title: 'Welcome!',
-          template: 'Thank You for Logining...'
+          template: 'Your details have been Successfully recorded...'
         });
-        $state.go('settings');
+        $state.go('addChild');
         $scope.loginData.email = '';
-        $scope.loginData.mobile = '';
+        $scope.loginData.password = '';
       }
     });
   };
@@ -83,6 +84,7 @@ angular.module('starter.controllers', [])
         $scope.userDetails.email = '';
         $scope.userDetails.address = '';
         $scope.userDetails.mobile = '';
+        $scope.userDetails.password = '';
       });
     });
   };
@@ -121,12 +123,28 @@ angular.module('starter.controllers', [])
         $scope.accountDetails.updated_at = new Date();
         console.log($scope.accountDetails);
         $scope.accountDetails.userId = $rootScope.userId;
-        UserService.addChildDetails($scope.accountDetails);
-        var alertPopup = $ionicPopup.alert({
-          title: 'Oops!',
-          template: 'Your Child Details are added Successfully'
+        UserService.addChildDetails($scope.accountDetails).then(function(res){
+          if(res==-1)
+           {
+             var alertPopup = $ionicPopup.alert({
+               title: 'Oops!',
+               template: 'Limit exceeded for adding child'
+             });
+             $state.go('report');
+           }
+           else {
+             var alertPopup = $ionicPopup.alert({
+               title: 'Oops!',
+               template: 'Your Child Details are Successfully Recorded'
+             });
+             $state.go('report');
+           }
+           $scope.accountDetails.userName="";
+           $scope.accountDetails.fullName="";
+           $scope.accountDetails.dob="";
+          $scope.accountDetails.grade="";
+
         });
-        $state.go('report');
       }else {
         var alertPopup = $ionicPopup.alert({
               title: 'Oops!',
@@ -248,27 +266,118 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('SettingsCtrl', function($scope, $state, Backand, $http, $rootScope, $ionicPopup, $window) {
+.controller('SettingsCtrl', function($scope, $state, Backand, $http, $rootScope, $ionicPopup, $window,UserService) {
 
-  $scope.goToAddChild = function(){
-    $state.go('addChild');
+  //$scope.gameOneDetails={};
+  //$scope.gameTwoDetails={};
+  //$scope.gameThreeDetails={};
+
+  $scope.goToMenu = function(){
+    $state.go('onclickmenu');
   };
 
-  $scope.goToReport = function(){
-    $state.go('report');
-  };
+  $scope.goToGameReport = function(id,game){
+    console.log(id);
+    console.log(game);
+    var gamedetails=[];
+    var j=0;
+    gamedetails[j]="";
+    var data ={};
+    data.id=id;
+    data.game=game;
+    UserService.getGameOneDetails(data).then(function(result){
+      $state.go('gamereport');
+      for(var i=0;i<result.length;i++)
+      {
+      //  console.log(result[i]);
+      //  console.log(typeof(result[i]));
+        if(result[i]==' '){
+          j++;
+          gamedetails[j]="";}
+        else{
+        gamedetails[j]=gamedetails[j]+result[i];
+        //console.log(gamedetails[j]);
+     }
+      }
+      for(i=0;i<gamedetails.length;i++)
+        console.log(gamedetails[i]);
+      //{
+        //console.log(typeof(gamedetails[i]));
+      //}
+      $rootScope.correctanswers=gamedetails[0];
+      $rootScope.que     =  gamedetails[2];
+      $rootScope.missed  =  gamedetails[4];
+      $rootScope.totaltime= gamedetails[6];
+      //console.log($scope.tot);
+    });
 
-  $scope.goToSubscriptions = function(){
-    $state.go('subscription');
+    //$scope.gameOneDetails={grade:'b',result:'done 2 out of 8'};
   };
-
   $scope.logout = function(){
     $window.localStorage.clear();
     console.log($rootScope.userId);
     $state.go('main');
   };
 
-  $scope.goToDelete = function(){
-    $state.go('delete');
+})
+
+.controller('OnClickMenuCtrl', function($scope, $state,Backand, $http, $rootScope, $ionicPopup,UserService) {
+
+  $scope.goToSettings = function(){
+    $state.go('settings');
+  };
+
+  $scope.goToSubscriptions = function(){
+    $state.go('subscription');
+  };
+})
+
+.controller('GameReport', function($scope, $state,Backand, $http, $rootScope, $ionicPopup,UserService) {
+  $scope.goToMenu = function(){
+    $state.go('onclickmenu');
+  };
+
+  $scope.goToGameReport = function(id,game){
+    console.log(id);
+    console.log(game);
+    var gamedetails=[];
+    var j=0;
+    gamedetails[j]="";
+    var data ={};
+    data.id=id;
+    data.game=game;
+    UserService.getGameOneDetails(data).then(function(result){
+      $state.go('gamereport');
+      for(var i=0;i<result.length;i++)
+      {
+      //  console.log(result[i]);
+      //  console.log(typeof(result[i]));
+        if(result[i]==' '){
+          j++;
+          gamedetails[j]="";}
+        else{
+        gamedetails[j]=gamedetails[j]+result[i];
+        //console.log(gamedetails[j]);
+     }
+      }
+      for(i=0;i<gamedetails.length;i++)
+        console.log(gamedetails[i]);
+      //{
+        //console.log(typeof(gamedetails[i]));
+      //}
+      $rootScope.correctanswers=gamedetails[0];
+      $rootScope.que     =  gamedetails[2];
+      $rootScope.missed  =  gamedetails[4];
+      $rootScope.totaltime= gamedetails[6];
+      //console.log($scope.tot);
+    });
+
+    //$scope.gameOneDetails={grade:'b',result:'done 2 out of 8'};
+  };
+
+  $scope.logout = function(){
+    $window.localStorage.clear();
+    console.log($rootScope.userId);
+    $state.go('main');
   };
 });

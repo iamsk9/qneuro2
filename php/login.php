@@ -7,9 +7,9 @@
    if (isset($postdata)) {
       $request = json_decode($postdata);
       $email = $request->email;
-      $mobile = $request->mobile;
+      $password = $request->password;
 
-      $query  = "SELECT id FROM user WHERE email='$email' AND mobile='$mobile'";
+      $query  = "SELECT id FROM user WHERE email='$email' AND password='$password'";
       $res = mysqli_query($conn, $query);
       while($row = mysqli_fetch_array($res)){
        $id = $row['id'];
@@ -18,4 +18,3 @@
     }
     mysqli_close($conn);
 ?>
-				

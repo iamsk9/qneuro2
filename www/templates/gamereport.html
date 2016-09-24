@@ -1,0 +1,82 @@
+<ion-view style="background-color: #52BDF2;">
+  <ion-content>
+    <div class="container">
+      <table>
+        <tr>
+          <td>
+            <div class="left">
+          <button class="button button-positive" id="tabb" ng-click="goToMenu()" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
+            Menu
+          </button><br><br>
+            <button class="button button-positive" id="tabb" ng-click="goToGameReport(49,1)" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
+           Game1
+          </button><br><br>
+          <button class="button button-positive" id="tabb" ng-click="goToGameReport(49,2)" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
+            Game2
+          </button><br><br>
+          <button class="button button-positive" id="tabb" ng-click="goToGameReport(49,3)" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
+            Game3
+          </button><br>
+          </div>
+        </td>
+
+    <td>
+    <div class="contain1">
+      <label id="space">From</label>
+      <input type="text" id="space">
+      <label id="space">To</label>
+      <input type="text">
+      <br><br>
+      <h5>Hi Boss your performance report for Axoninfinity Mathcore</h5><br><br>
+
+      <!--<label style="float:right;padding-right:15px;">Achievements</label><br><br>
+      <div style="width:150px;height:100px;border:1px solid #000;">Total correct answer</div>-->
+      <table>
+        <tr>
+          <th>
+
+          </th>
+          <th>
+            Achievements
+          </th>
+        </tr>
+        <tr>
+          <td>
+            Total correct answer
+          </td>
+          <td>
+            {{correctanswers}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Total questions
+          </td>
+          <td>
+            {{que}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Missed Questions
+          </td>
+          <td>
+            {{missed}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Total Time Taken
+          </td>
+          <td>
+            {{totaltime}}
+          </td>
+        </tr>
+      </table>
+    </div>
+  </td>
+  </tr>
+</table>
+  </div>
+  </ion-content>
+</ion-view>
