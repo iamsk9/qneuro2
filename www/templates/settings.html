@@ -9,13 +9,13 @@
       <button class="button button-positive" id="tabb" ng-click="goToMenu()" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
         Menu
       </button><br><br>
-        <button class="button button-positive" id="tabb" ng-click="goToGameReport(userId,1)" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
+        <button class="button button-positive" id="tabb" ng-disabled="!checkChild" ng-click="goToGameReport(userId,1)" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
        Game1
       </button><br><br>
-      <button class="button button-positive" id="tabb" ng-click="goToGameReport(userId,2)" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
+      <button class="button button-positive" id="tabb" ng-disabled="!checkChild" ng-click="goToGameReport(userId,2)" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
         Game2
       </button><br><br>
-      <button class="button button-positive" id="tabb" ng-click="goToGameReport(userId,3)" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
+      <button class="button button-positive" id="tabb" ng-disabled="!checkChild" ng-click="goToGameReport(userId,3)" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
         Game3
       </button><br>
       </div>

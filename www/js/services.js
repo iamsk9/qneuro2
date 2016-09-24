@@ -60,6 +60,15 @@ angular.module('starter.services', [])
         });
   };
 
+  ifNoChild =function(data){
+    var link = 'http://epicsoft.esy.es/check.php';
+      return $http.post(link, data)
+      .then(function (res){
+        console.log(res);
+        return res.data;
+      });
+  };
+
   return{
     addUser: addUser,
     getUserId:getUserId,
@@ -67,6 +76,7 @@ angular.module('starter.services', [])
     deleteChildDetails: deleteChildDetails,
     logining:logining,
     addSubscription: addSubscription,
-    getGameOneDetails : getGameOneDetails
+    getGameOneDetails : getGameOneDetails,
+    ifNoChild : ifNoChild
   };
 });

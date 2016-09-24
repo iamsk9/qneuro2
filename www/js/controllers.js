@@ -14,6 +14,7 @@ angular.module('starter.controllers', [])
 .controller('LoginCtrl', function($scope, $state,Backand, $http, $rootScope, $ionicPopup, UserService) {
 
   $scope.loginData = {};
+  $rootScope.checkChild=true;
 
   $scope.doLogin = function(){
     console.log($scope.loginData);
@@ -52,9 +53,18 @@ angular.module('starter.controllers', [])
           title: 'Welcome!',
           template: 'Your details have been Successfully recorded...'
         });
-        $state.go('addChild');
+        var data ={};
+        data.id=$rootScope.userId;
+        UserService.ifNoChild(data).then(function(res){
+          console.log(res);
+          if(res==0){
+            $rootScope.checkChild=false;
+            }
+        });
+        $state.go('settings');
         $scope.loginData.email = '';
         $scope.loginData.password = '';
+
       }
     });
   };
@@ -137,7 +147,7 @@ angular.module('starter.controllers', [])
                title: 'Oops!',
                template: 'Your Child Details are Successfully Recorded'
              });
-             $state.go('report');
+             $state.go('gamereport');
            }
            $scope.accountDetails.userName="";
            $scope.accountDetails.fullName="";
@@ -317,6 +327,7 @@ angular.module('starter.controllers', [])
     $window.localStorage.clear();
     console.log($rootScope.userId);
     $state.go('main');
+    $rootScope.checkChild=true;
   };
 
 })
@@ -325,6 +336,10 @@ angular.module('starter.controllers', [])
 
   $scope.goToSettings = function(){
     $state.go('settings');
+  };
+
+  $scope.goToAddChild = function(){
+    $state.go('addChild');
   };
 
   $scope.goToSubscriptions = function(){
