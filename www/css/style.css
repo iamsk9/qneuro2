@@ -34,17 +34,17 @@ td {
 
 input[type=text] {
     border: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid white;
     marging:8px 0;
     box-sizing: border-box;
     background: transparent;
     width: 200px;
-    font-size: 15px;
+    font-size: 12px;
 }
 
 input[type=password] {
     border: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid white;
     marging:8px 0;
     box-sizing: border-box;
     background: transparent;

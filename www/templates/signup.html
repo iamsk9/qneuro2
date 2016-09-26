@@ -1,51 +1,52 @@
-<ion-view style="background-color: #52BDF2;">
+<ion-view style="background: url(img/signup/background.png) no-repeat; width:100%; height:100%;background-size:cover;">
   <ion-content>
     <form name="userForm" ng-submit="addUser()">
     <div class="signupForm">
       <table>
-        <tbody>
-          <tr>
-             <td>User name :</td>
-             <td><input type="text" ng-model="userDetails.userName" required>
+        <tbody >
+          <tr >
+            <td><img src="img/signup/user.png" style="width:120px; margin-top:85%; padding-top:55%;"></td>
+             <td><input type="text" ng-model="userDetails.userName" required style="color:#fff">
              </td>
            </tr>
            <tr>
-             <td>Full name :</td>
-             <td><input type="text" name="fullname" ng-model="userDetails.fullName" ng-pattern="/^[a-zA-Z ]*$/" required>
+             <td><img src="img/signup/full.png" style="width:120px; "></td>
+             <td><input type="text" name="fullname" ng-model="userDetails.fullName" ng-pattern="/^[a-zA-Z ]*$/" required style="color:#fff">
              <p style="font-size:12px" ng-show="userForm.fullname.$error.pattern">Name in alphabets only.</p></td>
            </tr>
            <tr>
-             <td>Email ID :</td>
-             <td><input type="text" ng-model="userDetails.email" name="email" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required>
+             <td><img src="img/signup/email.png" style="width:120px; "></td>
+             <td><input type="text" ng-model="userDetails.email" name="email" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required style="color:#fff">
                <p style="font-size:12px" ng-show="userForm.email.$error.pattern">Invalid Email.</p>
              </td>
            </tr>
            <tr>
-             <td>Address :</td>
-             <td><input type="text" ng-model="userDetails.address" required></td>
+             <td><img src="img/signup/address.png" style="width:120px; "></td>
+             <td><input type="text" ng-model="userDetails.address" required style="color:#fff"></td>
            </tr>
            <tr>
-             <td>Mobile number :</td>
-             <td><input type="text" ng-model="userDetails.mobile" name="phoneno" ng-minlength="10" ng-pattern="/^[0-9]+$/" required>
+             <td><img src="img/signup/mobile.png" style="width:120px; "></td>
+             <td><input type="text" ng-model="userDetails.mobile" name="phoneno" ng-minlength="10" ng-pattern="/^[0-9]+$/" required style="color:#fff">
                <p style="font-size:12px" ng-show="userForm.phoneno.$error.pattern">Number in digits only.</p>
                <p style="font-size:12px" ng-show="userForm.phoneno.$error.minlength">Number is atleast 10 digits.</p>
              </td>
            </tr>
            <tr>
-              <td>Password :</td>
-              <td><input type="password" name="passsword" ng-minlength="5" ng-model="userDetails.password" required>
+              <td><img src="img/signup/pass.png" style="width:120px; "></td>
+              <td><input type="password" name="passsword" ng-minlength="5" ng-model="userDetails.password" required style="color:#fff">
                 <p style="font-size:12px" ng-show="userForm.passsword.$error.minlength">password too short.</p>
               </td
            </tr>
         </tbody>
       </table>
     </div>
-    <div class="accept">
-      <input type="checkbox" ng-model="accept">I accept
+    <div class="accept" style="padding-top:20px; color:white">
+      <input type="checkbox" ng-model="accept" style="color:#fff">I accept
     </div>
     <div class="backnext">
-      <button class="button button-positive" id="butt" ng-click="goBack()" style="border: 1px solid white;background: url(img/background.png) no-repeat;width:120px;">Back</button><br><br>
-      <button class="button button-positive" id="butt" ng-disabled="!accept" style="border: 1px solid white;background: url(img/background.png) no-repeat;width:120px;">Next</button>
+      <button class="button button-positive" id="butt" ng-click="goBack()" style="background: url(img/signup/back.png) no-repeat;width:100%;height:100%;background-size:contain;margin-right:25%;"></button>
+      <br>
+      <button class="button button-positive" id="butt" ng-disabled="!accept" style="background: url(img/signup/next.png) no-repeat;width:100%;height:100%;background-size:contain;margin-right:25%;"></button>
     </div>
     </form>
   </ion-content>
