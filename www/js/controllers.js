@@ -120,18 +120,18 @@ angular.module('starter.controllers', [])
 
   $scope.createAccount = function(){
 
-    if($scope.gender.female != null && $scope.gender.female != false && $scope.gender.male != null && $scope.gender.male != false){
+    if($scope.gender.male == null && $scope.gender.female == null){
       flag = 0;
       var alertPopup = $ionicPopup.alert({
-            title: 'Not Both!',
+            title: 'Oops',
             template: 'Select Male or Female'
       });
     }else {
-      if($scope.gender.male != null && $scope.gender.male != false){
+      if($scope.gender.female == null && $scope.gender.male == "male"){
         $scope.accountDetails.gender = "male";
         flag = 1;
       }
-      else if ($scope.gender.female != null && $scope.gender.female != false) {
+      else if ($scope.gender.male == null && $scope.gender.female == "female") {
         $scope.accountDetails.gender = "female";
         flag = 1;
       }else {
