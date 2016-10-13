@@ -9,13 +9,13 @@
       <button class="button button-positive" id="tabb" ng-click="goToMenu()" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
         Menu
       </button><br><br>
-        <button class="button button-positive" id="tabb" ng-disabled="!checkChild" ng-click="goToGameReport(userId,1)" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
+        <button class="button button-positive" id="tabb" ng-hide="!checkChild" ng-click="goToGameReport(userId,1)" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
        Game1
       </button><br><br>
-      <button class="button button-positive" id="tabb" ng-disabled="!checkChild" ng-click="goToGameReport(userId,2)" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
+      <button class="button button-positive" id="tabb" ng-hide="!checkChild" ng-click="goToGameReport(userId,2)" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
         Game2
       </button><br><br>
-      <button class="button button-positive" id="tabb" ng-disabled="!checkChild" ng-click="goToGameReport(userId,3)" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
+      <button class="button button-positive" id="tabb" ng-hide="!checkChild" ng-click="goToGameReport(userId,3)" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
         Game3
       </button><br>
       </div>
@@ -42,8 +42,8 @@
         Settings
       </button><br><br>
       <label id="space">PIN:</label>
-      <label>On  </label><input type="checkbox" id="space">
-      <label>Off  </label><input type="checkbox"><br><br>
+      <label>On  </label><input type="radio" name="pin" ng-model="pin.on">
+      <label>Off  </label><input type="radio" name="pin" ng-model="pin.off"><br><br>
       <center>
         <button class="button button-positive" style="border: 1px solid white;background: url(img/background.png) no-repeat;" ng-click="logout()">
           Log out
