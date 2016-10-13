@@ -119,6 +119,7 @@ angular.module('starter.controllers', [])
   var flag = 0;
 
   $scope.createAccount = function(){
+
     if($scope.gender.female != null && $scope.gender.female != false && $scope.gender.male != null && $scope.gender.male != false){
       flag = 0;
       var alertPopup = $ionicPopup.alert({
