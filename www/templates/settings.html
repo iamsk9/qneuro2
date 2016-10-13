@@ -29,7 +29,7 @@
       <button class="button button-positive" id="space" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
         Upgrade
       </button>
-      <button class="button button-positive" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
+      <button class="button button-positive" ng-click="renew()" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
         Renew Account
       </button><br><br>
       <button class="button button-positive" id="space" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
@@ -38,8 +38,8 @@
       <button class="button button-positive" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
         Help
       </button><br><br>
-      <button class="button button-positive" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
-        Settings
+      <button class="button button-positive" ng-click="goToAddChild()" style="border: 1px solid white;background: url(img/background.png) no-repeat;">
+        addChild
       </button><br><br>
       <label id="space">PIN:</label>
       <label>On  </label><input type="radio" name="pin" ng-model="pin.on">

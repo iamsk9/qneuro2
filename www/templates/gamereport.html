@@ -7,15 +7,15 @@
             <div class="left">
           <button class="button button-positive" id="tabb" ng-click="goToMenu()" style="background: url(img/dashboard/menu.png) no-repeat;width:100%;height:100%;background-size:contain;margin-left:25%;margin-top:10%">
           </button><br><br>
-            <button class="button button-positive" id="tabb" ng-click="goToGameReport(49,1)" style="background: url(img/dashboard/axon.png) no-repeat;width:100%;height:100%;background-size:contain;margin-left:25%;"></button>
+          <button class="button button-positive" id="tabb" ng-click="goToGameReport(userId,1)" style="background: url(img/dashboard/axon.png) no-repeat;width:100%;height:100%;background-size:contain;margin-left:25%;"></button>
             <br><br>
-          <button class="button button-positive" id="tabb" ng-click="goToGameReport(49,2)" style="background: url(img/dashboard/mc.png) no-repeat;width:100%;height:100%;background-size:contain;margin-left:25%;"></button>
+          <button class="button button-positive" id="tabb" ng-click="goToGameReport(userId,2)" style="background: url(img/dashboard/mc.png) no-repeat;width:100%;height:100%;background-size:contain;margin-left:25%;"></button>
           <br><br>
-          <button class="button button-positive" id="tabb" ng-click="goToGameReport(49,3)" style="background: url(img/dashboard/genesis.png) no-repeat;width:100%;height:100%;background-size:contain;margin-left:25%;"></button>
+          <button class="button button-positive" id="tabb" ng-click="goToGameReport(userId,3)" style="background: url(img/dashboard/genesis.png) no-repeat;width:100%;height:100%;background-size:contain;margin-left:25%;"></button>
           <br><br>
-          <button class="button button-positive" id="tabb" ng-click="goToGameReport(49,4)" style="background: url(img/dashboard/icon1.png) no-repeat;width:100%;height:100%;background-size:contain;margin-left:25%;"></button>
+          <button class="button button-positive" id="tabb"  style="background: url(img/dashboard/icon1.png) no-repeat;width:100%;height:100%;background-size:contain;margin-left:25%;"></button>
           <br><br>
-          <button class="button button-positive" id="tabb" ng-click="goToGameReport(49,3)" style="background: url(img/dashboard/math.png) no-repeat;width:100%;height:100%;background-size:contain;margin-left:25%;"></button>
+          <button class="button button-positive" id="tabb" style="background: url(img/dashboard/math.png) no-repeat;width:100%;height:100%;background-size:contain;margin-left:25%;"></button>
           </div>
         </td>
 
@@ -40,7 +40,7 @@
           <td>
               <img src="img/dashboard/success.png" alt="description here" width="80%" />
           </td>
-          <td>
+          <td style="color:white">
             {{correctanswers}}
           </td>
         </tr>
@@ -48,7 +48,7 @@
           <td>
             <img src="img/dashboard/total_questions.png" alt="description here" width="80%" />
           </td>
-          <td>
+          <td style="padding-top:0px">
             {{que}}
           </td>
         </tr>
@@ -57,7 +57,7 @@
             <img style="color:white" src="img/dashboard/missed.png" alt="description here" width="80%" />
           </td>
           <td>
-
+           {{missed}}
           </td>
         </tr>
         <tr>

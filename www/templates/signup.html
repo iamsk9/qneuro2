@@ -26,9 +26,10 @@
            </tr>
            <tr>
              <td><img src="img/signup/mobile.png" style="width:120px; "></td>
-             <td><input type="text" ng-model="userDetails.mobile" name="phoneno" ng-minlength="10" ng-pattern="/^[0-9]+$/" style="color:#fff">
+             <td><input type="text" ng-model="userDetails.mobile" name="phoneno" ng-minlength="10" ng-maxlength="12" ng-pattern="/^[0-9]+$/" style="color:#fff">
                <p style="font-size:12px" ng-show="userForm.phoneno.$error.pattern">Number in digits only.</p>
                <p style="font-size:12px" ng-show="userForm.phoneno.$error.minlength">Number is atleast 10 digits.</p>
+               <p style="font-size:12px" ng-show="userForm.phoneno.$error.maxlength">Number is should have max 10 to 12 digits</p>
              </td>
            </tr>
            <tr>

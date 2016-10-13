@@ -314,6 +314,21 @@ angular.module('starter.controllers', [])
     $state.go('onclickmenu');
   };
 
+  $scope.goToAddChild = function(){
+    $state.go('register');
+  };
+
+  $scope.renew = function(){
+    if($rootScope.checkChild)
+    $state.go('subscriptionrenew');
+    else {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Sorry!',
+        template: 'You dont have any child details'
+      });
+    }
+  };
+
   $scope.goToGameReport = function(id,game){
     console.log(id);
     console.log(game);
@@ -372,6 +387,52 @@ angular.module('starter.controllers', [])
 
   $scope.goToSubscriptions = function(){
     $state.go('subscription');
+  };
+})
+
+.controller('Subscriptionrenew', function($scope, $state,Backand, $http, $rootScope, $ionicPopup,UserService) {
+  var subscript = {};
+  $scope.updatePlan = function(){
+    subscript.userId = $rootScope.userId;
+    if(document.getElementById('plan1').checked)
+    {
+      subscript.planNo = 'Plan 1';
+      console.log(subscript);
+      UserService.updateSubscription(subscript);
+      var alertPopup = $ionicPopup.alert({
+        title: 'Thank You!',
+        template: 'Your Subscription has been Successfully renwed..'
+      });
+      $state.go('register');
+    }
+    else if(document.getElementById('plan2').checked)
+    {
+        subscript.planNo = 'Plan 2';
+        console.log(subscript);
+        UserService.updateSubscription(subscript);
+        var alertPopup = $ionicPopup.alert({
+          title: 'Thank You!',
+          template: 'Your Subscription has been Successfully renwed..'
+        });
+        $state.go('register');
+    }
+    else if(document.getElementById('plan3').checked)
+    {
+      subscript.planNo = 'Plan 3';
+      console.log(subscript);
+      UserService.updateSubscription(subscript);
+      var alertPopup = $ionicPopup.alert({
+        title: 'Thank You!',
+        template: 'Your Subscription has been Successfully renwed..'
+      });
+      $state.go('register');
+    }
+    else {
+      var alertPopup = $ionicPopup.alert({
+            title: 'Oops!',
+            template: 'Select a Subscription plan'
+      });
+    }
   };
 })
 

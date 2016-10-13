@@ -51,6 +51,14 @@ angular.module('starter.services', [])
     });
   };
 
+  updateSubscription = function(data){
+    console.log(data);
+    var link = 'http://epicsoft.esy.es/subscriptionrenew.php';
+    $http.post(link, data).then(function (res){
+      console.log(res.data);
+    });
+  };
+
   getGameOneDetails = function(data){
       console.log(data);
       var link = 'http://epicsoft.esy.es/gamedetails.php';
@@ -77,6 +85,7 @@ angular.module('starter.services', [])
     logining:logining,
     addSubscription: addSubscription,
     getGameOneDetails : getGameOneDetails,
-    ifNoChild : ifNoChild
+    ifNoChild : ifNoChild,
+    updateSubscription : updateSubscription
   };
 });
