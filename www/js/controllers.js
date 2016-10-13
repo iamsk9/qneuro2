@@ -11,7 +11,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('LoginCtrl', function($scope, $state,Backand, $http, $rootScope, $ionicPopup, UserService) {
+.controller('LoginCtrl', function($scope, $state,Backand, $http, $rootScope, $ionicPopup, UserService, $ionicPlatform) {
 
   $scope.loginData = {};
   $rootScope.checkChild=true;
@@ -62,6 +62,9 @@ angular.module('starter.controllers', [])
             }
         });
         $state.go('settings');
+        $ionicPlatform.registerBackButtonAction(function (event) {
+                    event.preventDefault();
+            }, 100);
         $scope.loginData.email = '';
         $scope.loginData.password = '';
 
