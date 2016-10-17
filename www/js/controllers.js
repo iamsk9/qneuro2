@@ -311,7 +311,7 @@ angular.module('starter.controllers', [])
   //$scope.gameThreeDetails={};
   $scope.pin={};
   $scope.goToMenu = function(){
-    $state.go('onclickmenu');
+    $state.go('gamereport');
   };
 
   $scope.goToAddChild = function(){
