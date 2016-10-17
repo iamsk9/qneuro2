@@ -11,7 +11,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('LoginCtrl', function($scope, $state,Backand, $http, $rootScope, $ionicPopup, UserService) {
+.controller('LoginCtrl', function($scope, $state,Backand, $http, $rootScope, $ionicPopup, UserService, $ionicPlatform) {
 
   $scope.loginData = {};
   $rootScope.checkChild=true;
@@ -61,7 +61,7 @@ angular.module('starter.controllers', [])
             $rootScope.checkChild=false;
             }
         });
-        $state.go('settings');
+        $state.go('gamereport');
         $scope.loginData.email = '';
         $scope.loginData.password = '';
 
@@ -75,28 +75,36 @@ angular.module('starter.controllers', [])
   $scope.userDetails = {};
 
   $scope.addUser = function(){
-
-    $scope.userDetails.created_at = new Date();
-    UserService.addUser($scope.userDetails)
-    .then(function(result){
-      console.log(result);
+    if($scope.userDetails.userName ==null||$scope.userDetails.fullName ==null||$scope.userDetails.email ==null||$scope.userDetails.address == null||$scope.userDetails.mobile ==null||$scope.userDetails.password == null)
+    {
       var alertPopup = $ionicPopup.alert({
-        title: 'Welcome!',
-        template: 'Thank You for signing up...'
+        title: 'Oops!',
+        template: 'Please enter all the fields...'
       });
-      UserService.logining($scope.userDetails)
+    }
+    else {
+      $scope.userDetails.created_at = new Date();
+      UserService.addUser($scope.userDetails)
       .then(function(result){
         console.log(result);
-        $rootScope.userId = result;
-        $state.go('subscription');
-        $scope.userDetails.userName = '';
-        $scope.userDetails.fullName = '';
-        $scope.userDetails.email = '';
-        $scope.userDetails.address = '';
-        $scope.userDetails.mobile = '';
-        $scope.userDetails.password = '';
+        var alertPopup = $ionicPopup.alert({
+          title: 'Welcome!',
+          template: 'Thank You for signing up...'
+        });
+        UserService.logining($scope.userDetails)
+        .then(function(result){
+          console.log(result);
+          $rootScope.userId = result;
+          $state.go('subscription');
+          $scope.userDetails.userName = '';
+          $scope.userDetails.fullName = '';
+          $scope.userDetails.email = '';
+          $scope.userDetails.address = '';
+          $scope.userDetails.mobile = '';
+          $scope.userDetails.password = '';
+        });
       });
-    });
+    }
   };
 
   $scope.goBack = function(){
@@ -111,18 +119,19 @@ angular.module('starter.controllers', [])
   var flag = 0;
 
   $scope.createAccount = function(){
-    if($scope.gender.female != null && $scope.gender.female != false && $scope.gender.male != null && $scope.gender.male != false){
+
+    if($scope.gender.male == null && $scope.gender.female == null){
       flag = 0;
       var alertPopup = $ionicPopup.alert({
-            title: 'Not Both!',
+            title: 'Oops',
             template: 'Select Male or Female'
       });
     }else {
-      if($scope.gender.male != null && $scope.gender.male != false){
+      if($scope.gender.female == null && $scope.gender.male == "male"){
         $scope.accountDetails.gender = "male";
         flag = 1;
       }
-      else if ($scope.gender.female != null && $scope.gender.female != false) {
+      else if ($scope.gender.male == null && $scope.gender.female == "female") {
         $scope.accountDetails.gender = "female";
         flag = 1;
       }else {
@@ -212,24 +221,44 @@ angular.module('starter.controllers', [])
   $scope.addSubscription = function(){
     subscript.userId = $rootScope.userId;
     if(document.getElementById('plan1').checked)
+    {
       subscript.planNo = 'Plan 1';
+      console.log(subscript);
+      UserService.addSubscription(subscript);
+      var alertPopup = $ionicPopup.alert({
+        title: 'Thank You!',
+        template: 'Your Subscription has been Successfully added..'
+      });
+      $state.go('register');
+    }
     else if(document.getElementById('plan2').checked)
-      subscript.planNo = 'Plan 2';
+    {
+        subscript.planNo = 'Plan 2';
+        console.log(subscript);
+        UserService.addSubscription(subscript);
+        var alertPopup = $ionicPopup.alert({
+          title: 'Thank You!',
+          template: 'Your Subscription has been Successfully added..'
+        });
+        $state.go('register');
+    }
     else if(document.getElementById('plan3').checked)
+    {
       subscript.planNo = 'Plan 3';
+      console.log(subscript);
+      UserService.addSubscription(subscript);
+      var alertPopup = $ionicPopup.alert({
+        title: 'Thank You!',
+        template: 'Your Subscription has been Successfully added..'
+      });
+      $state.go('register');
+    }
     else {
       var alertPopup = $ionicPopup.alert({
             title: 'Oops!',
             template: 'Select a Subscription plan'
       });
     }
-    console.log(subscript);
-    UserService.addSubscription(subscript);
-    var alertPopup = $ionicPopup.alert({
-      title: 'Thank You!',
-      template: 'Your Subscription has been Successfully added..'
-    });
-    $state.go('register');
   };
 })
 
@@ -281,9 +310,24 @@ angular.module('starter.controllers', [])
   //$scope.gameOneDetails={};
   //$scope.gameTwoDetails={};
   //$scope.gameThreeDetails={};
-
+  $scope.pin={};
   $scope.goToMenu = function(){
     $state.go('onclickmenu');
+  };
+
+  $scope.goToAddChild = function(){
+    $state.go('register');
+  };
+
+  $scope.renew = function(){
+    if($rootScope.checkChild)
+    $state.go('subscriptionrenew');
+    else {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Sorry!',
+        template: 'You dont have any child details'
+      });
+    }
   };
 
   $scope.goToGameReport = function(id,game){
@@ -347,9 +391,55 @@ angular.module('starter.controllers', [])
   };
 })
 
+.controller('Subscriptionrenew', function($scope, $state,Backand, $http, $rootScope, $ionicPopup,UserService) {
+  var subscript = {};
+  $scope.updatePlan = function(){
+    subscript.userId = $rootScope.userId;
+    if(document.getElementById('plan1').checked)
+    {
+      subscript.planNo = 'Plan 1';
+      console.log(subscript);
+      UserService.updateSubscription(subscript);
+      var alertPopup = $ionicPopup.alert({
+        title: 'Thank You!',
+        template: 'Your Subscription has been Successfully renwed..'
+      });
+      $state.go('register');
+    }
+    else if(document.getElementById('plan2').checked)
+    {
+        subscript.planNo = 'Plan 2';
+        console.log(subscript);
+        UserService.updateSubscription(subscript);
+        var alertPopup = $ionicPopup.alert({
+          title: 'Thank You!',
+          template: 'Your Subscription has been Successfully renwed..'
+        });
+        $state.go('register');
+    }
+    else if(document.getElementById('plan3').checked)
+    {
+      subscript.planNo = 'Plan 3';
+      console.log(subscript);
+      UserService.updateSubscription(subscript);
+      var alertPopup = $ionicPopup.alert({
+        title: 'Thank You!',
+        template: 'Your Subscription has been Successfully renwed..'
+      });
+      $state.go('register');
+    }
+    else {
+      var alertPopup = $ionicPopup.alert({
+            title: 'Oops!',
+            template: 'Select a Subscription plan'
+      });
+    }
+  };
+})
+
 .controller('GameReport', function($scope, $state,Backand, $http, $rootScope, $ionicPopup,UserService) {
   $scope.goToMenu = function(){
-    $state.go('onclickmenu');
+    $state.go('settings');
   };
 
   $scope.goToGameReport = function(id,game){

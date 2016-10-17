@@ -5,35 +5,36 @@
       <table>
         <tbody >
           <tr >
-            <td><img src="img/signup/user.png" style="width:120px; margin-top:85%; padding-top:55%;"></td>
-             <td><input type="text" ng-model="userDetails.userName" required style="color:#fff">
+            <td><img src="img/signup/user.png" style="width:120px; margin-top:85%; padding-top:75%;"></td>
+             <td><input type="text" name = "username" ng-model="userDetails.userName" style="color:#fff">
              </td>
            </tr>
            <tr>
              <td><img src="img/signup/full.png" style="width:120px; "></td>
-             <td><input type="text" name="fullname" ng-model="userDetails.fullName" ng-pattern="/^[a-zA-Z ]*$/" required style="color:#fff">
+             <td><input type="text" name="fullname" ng-model="userDetails.fullName" ng-pattern="/^[a-zA-Z ]*$/" style="color:#fff">
              <p style="font-size:12px" ng-show="userForm.fullname.$error.pattern">Name in alphabets only.</p></td>
            </tr>
            <tr>
              <td><img src="img/signup/email.png" style="width:120px; "></td>
-             <td><input type="text" ng-model="userDetails.email" name="email" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required style="color:#fff">
+             <td><input type="text" ng-model="userDetails.email" name="email" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" style="color:#fff">
                <p style="font-size:12px" ng-show="userForm.email.$error.pattern">Invalid Email.</p>
              </td>
            </tr>
            <tr>
              <td><img src="img/signup/address.png" style="width:120px; "></td>
-             <td><input type="text" ng-model="userDetails.address" required style="color:#fff"></td>
+             <td><input type="text" ng-model="userDetails.address" style="color:#fff"></td>
            </tr>
            <tr>
              <td><img src="img/signup/mobile.png" style="width:120px; "></td>
-             <td><input type="text" ng-model="userDetails.mobile" name="phoneno" ng-minlength="10" ng-pattern="/^[0-9]+$/" required style="color:#fff">
+             <td><input type="text" ng-model="userDetails.mobile" name="phoneno" ng-minlength="10" ng-maxlength="12" ng-pattern="/^[0-9]+$/" style="color:#fff">
                <p style="font-size:12px" ng-show="userForm.phoneno.$error.pattern">Number in digits only.</p>
                <p style="font-size:12px" ng-show="userForm.phoneno.$error.minlength">Number is atleast 10 digits.</p>
+               <p style="font-size:12px" ng-show="userForm.phoneno.$error.maxlength">Number is should have max 10 to 12 digits</p>
              </td>
            </tr>
            <tr>
               <td><img src="img/signup/pass.png" style="width:120px; "></td>
-              <td><input type="password" name="passsword" ng-minlength="5" ng-model="userDetails.password" required style="color:#fff">
+              <td><input type="password" name="passsword" ng-minlength="5" ng-model="userDetails.password" style="color:#fff">
                 <p style="font-size:12px" ng-show="userForm.passsword.$error.minlength">password too short.</p>
               </td
            </tr>

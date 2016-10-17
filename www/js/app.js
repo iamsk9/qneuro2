@@ -46,6 +46,11 @@ angular.module('starter', ['ionic', 'backand', 'starter.controllers', 'starter.s
     templateUrl: 'templates/register.html',
     controller: 'RegisterCtrl'
   })
+  .state('subscriptionrenew', {
+    url: '/subscriptionrenew',
+    templateUrl: 'templates/subscriptionrenew.html',
+    controller: 'Subscriptionrenew'
+  })
   .state('delete', {
     url: '/delete',
     templateUrl: 'templates/delete.html',
