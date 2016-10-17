@@ -86,6 +86,15 @@ angular.module('starter.controllers', [])
       $scope.userDetails.created_at = new Date();
       UserService.addUser($scope.userDetails)
       .then(function(result){
+        if(result == 'yes')
+        {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Oops!',
+            template: 'User already exists with this Email...'
+          });
+        }
+        else
+        {
         console.log(result);
         var alertPopup = $ionicPopup.alert({
           title: 'Welcome!',
@@ -103,7 +112,8 @@ angular.module('starter.controllers', [])
           $scope.userDetails.mobile = '';
           $scope.userDetails.password = '';
         });
-      });
+      }
+    });
     }
   };
 
